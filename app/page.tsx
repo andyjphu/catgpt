@@ -25,7 +25,7 @@ export default function Home() {
           </div>
           <div tabIndex={1} className="rounded-lg outline outline-2 outline-white">
             <input
-              className="transparent outline-none accent-transparent h-10 w-[95%]"
+              className="transparent h-10 w-[95%]"
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
