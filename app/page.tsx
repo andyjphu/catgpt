@@ -16,8 +16,16 @@ export default function Home() {
   };
 
   const fakeProcessing = () => {
-    setOutputs([...outputs, "CatGPT: " + "meow meow meow"]);
+    setOutputs([...outputs,"You: " + inputText,  "CatGPT: " + determineMeowNum()]);
     setProcessing(false);
+  }
+
+  const determineMeowNum = ():string => {
+    if (Math.random() < 0.4) {
+      return "";
+    }
+    
+    return "meow" + determineMeowNum();
   }
 
   return (
