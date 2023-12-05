@@ -3,8 +3,11 @@ import React, { useState, FormEvent } from 'react';
 
 export default function Home() {
   const [inputText, setInputText] = useState('');
-  const [outputs, setOutputs] = useState<string[]>([]);
+  const [outputs, setOutputs] = useState<string[]>(["CatGPT: Meow!"]);
   const [processing, setProcessing] = useState(false);
+
+
+  const possibleOutputs = [" *stares blankly*", " *meows*"," *meows*", " *looks away from you*", " *ignores you*", " *tilts head*", " *purrs*", " *hisses*", " *paws at you*", "...", "...", "...", "...", " *runs away*", " *lays down*"];
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,22 +18,40 @@ export default function Home() {
     setTimeout(fakeProcessing, Math.floor(Math.random() * 1000) + 500);
   };
 
-  const fakeProcessing = () => {
-    setOutputs([...outputs,"You: " + inputText,  "CatGPT: " + determineMeowNum()]);
-    setProcessing(false);
-  }
-
-  const determineMeowNum = ():string => {
-    if (Math.random() < 0.4) {
-      return "";
+  const fakeProcessing = (old: String) => {
+    let newToken = possibleOutputs[Math.floor(Math.random()*possibleOutputs.length)];
+    if (old == null) {
+      old = newToken;
     }
-    
-    return "meow" + determineMeowNum();
-  }
+    if (newToken ==  " *runs away*") {
+      if (old = " *runs away*") { 
+        old = "";
+      }
+      setOutputs([...outputs, "You: " + inputText, "CatGPT: " + old + newToken]);
+      setProcessing(false);
+      return;
+    }
+    if (newToken ==  " *lays down*") {
+      possibleOutputs.pop(); //Can't lay down twice, so remove it from the list
+      possibleOutputs.pop(); //also no running away while laying down
+    }
 
+    setOutputs([...outputs,"You: " + inputText,  "CatGPT: " + old]);
+
+
+    if (Math.random() < 0.77) {  // 75% chance to continue
+
+
+      setTimeout(fakeProcessing, Math.floor(Math.random() * 1000) + 500, old + newToken);
+      return;
+    }
+    setProcessing(false);
+    return;
+
+  }
   return (
     <main className="flex min-h-screen flex-row p-8 gap-3">
-      <div>
+      <div tabIndex={3} className=" x">
         <h1 className="text-6xl font-bold">Cat GPT</h1>
         <p className="text-2xl">The best large language meowdel.</p>
       </div>
