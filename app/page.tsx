@@ -52,9 +52,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-row p-8 gap-3">
       <div tabIndex={3} className="w-[20%] h-100 flex flex-col align-bottom">
-        <h1 className="text-5xl font-bold">Cat GPT</h1>
+        <h1 className="text-6xl font-bold">Cat GPT</h1>
         <p className="text-xl">The best large language</p>
-        <p className="text-xl">meowdel. (1.2)</p>
+        <p className="text-xl">meowdel (1.3)</p>
         <a className="text-xs underline" href="https://www.linkedin.com/in/andyjphu/">contact me</a>
         <div className="h-full"></div>
       </div>
