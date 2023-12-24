@@ -67,13 +67,13 @@ export default function Home() {
           </div>
           <div tabIndex={1} className="rounded-2xl outline outline-2 outline-white">
             <input
-              className="outline-none transparent h-[3.562em] w-[94%] p-3 "
+              className="outline-none transparent h-[3.562rem] w-[94%] p-3 "
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
             />
             <button
-              className="text-xl rounded-lg text-black items-center mt-3 ml-4 w-[1.75em] h-[1.75em] text-center" 
+              className="text-xl rounded-lg text-black items-center mt-3 ml-4 w-[1.75rem] h-[1.75rem] text-center" 
               disabled={processing} 
               type="submit"
               style={{ backgroundColor: processing ? '#808080' : '#ffffff' }}
