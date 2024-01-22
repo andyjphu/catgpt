@@ -73,7 +73,7 @@ export default function Home() {
               onChange={(e) => setInputText(e.target.value)}
             />
             <button
-              className="text-xl rounded-lg text-black items-center mt-3 ml-4 w-[1.75rem] h-[1.75rem] text-center" 
+              className="text-xl rounded-lg text-black items-center mt-3 ml-4 w-[1.75rem] h-[1.75em] text-center" 
               disabled={processing} 
               type="submit"
               style={{ backgroundColor: processing ? '#808080' : '#ffffff' }}
